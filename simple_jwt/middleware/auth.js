@@ -6,7 +6,7 @@ const auth = (req, res, next) => {
 
   if (!authHeader) {
     return res.status(401).json({
-      message: "No token provided"
+      message: "Token missing"
     });
   }
 
@@ -16,13 +16,13 @@ const auth = (req, res, next) => {
   try {
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET
+      process.env.JWT_ACCESS_SECRET
     );
 
     req.user = decoded;
 
     next();
-  } catch (error) {
+  } catch {
     return res.status(401).json({
       message: "Invalid token"
     });
