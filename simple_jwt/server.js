@@ -12,11 +12,26 @@ app.use(express.json());
 
 
 // Mock User
-const user = {
-  id: 1,
-  username: "john",
-  password: "123456"
-};
+const users = [
+  {
+    id: 1,
+    username: "admin",
+    password: "123",
+    role: "Admin"
+  },
+  {
+    id: 2,
+    username: "manager",
+    password: "123",
+    role: "Manager"
+  },
+  {
+    id: 3,
+    username: "user",
+    password: "123",
+    role: "User"
+  }
+];
 
 
 
