@@ -52,3 +52,4 @@ The following libraries are downloaded and used in this project:
 
 **Dev Dependencies:**
 - [`nodemon`](https://www.npmjs.com/package/nodemon) (^3.1.7) - A tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+additional:[`postmen`](https://nadullaknidu7-4880383.postman.co/workspace/postmen-acadamy~a7e61346-0351-4556-bab2-ca045a1f4f85/collection/50951538-d9ecd075-711a-4e08-a03f-871db1eb58fe?action=share&creator=50951538)-check to create APIs
