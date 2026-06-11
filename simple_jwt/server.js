@@ -69,31 +69,35 @@ function generateRefreshToken(user) {
 
 // Login Route
 app.post("/login", (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } =
+    req.body;
 
-  if (
-    username !== user.username ||
-    password !== user.password
-  ) {
+  const user = users.find(
+    u =>
+      u.username === username &&
+      u.password === password
+  );
+
+  if (!user) {
     return res.status(401).json({
       message: "Invalid credentials"
     });
   }
 
-  const accessToken =
-    generateAccessToken(user);
+  const token = jwt.sign(
+    {
+      id: user.id,
+      username: user.username,
+      role: user.role
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1h"
+    }
+  );
 
-  const refreshToken =
-    generateRefreshToken(user);
-
-  refreshTokens.push(refreshToken);
-
-  res.json({
-    accessToken,
-    refreshToken
-  });
+  res.json({ token });
 });
-
 
 
 app.get(
